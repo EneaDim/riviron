@@ -1,10 +1,40 @@
 # RISC-V Project Build System
 
-This README provides an overview of the build system for this RISC-V project, detailing the `config.mk` file and the associated `Makefile`. Together, these files facilitate the cross-compilation of RISC-V applications, managing the toolchain, source files, and build processes.
+This README provides an overview of the build system for this RISC-V project, detailing the `config.mk` file, the associated `Makefile`, and the RISC-V toolchain, including Spike and the Proxy Kernel. Together, these components facilitate the cross-compilation of RISC-V applications, managing the toolchain, source files, and build processes.
 
 ## Overview
 
-The project is structured to support the development of RISC-V applications using a cross-compilation toolchain. The `config.mk` file contains configuration settings for the toolchain and project structure, while the `Makefile` defines the build targets and rules for compiling, assembling, and generating output files.
+The project is structured to support the development of RISC-V applications using a cross-compilation toolchain. The `config.mk` file contains configuration settings for the toolchain and project structure, while the `Makefile` defines the build targets and rules for compiling, assembling, and linking the application.
+
+### Key Components
+
+1. **RISC-V GCC Toolchain**: A set of compilers and tools for building RISC-V applications, including:
+   . **GCC**: The GNU Compiler Collection for compiling C/C++ code.
+   . **GDB**: The GNU Debugger for debugging applications.
+   . **Binutils**: Tools for handling binary files, including `as` (assembler), `ld` (linker), and `objcopy`.
+2. **Spike**: The RISC-V ISA simulator that allows you to run RISC-V binaries in a simulated environment, useful for testing and debugging applications without actual hardware.
+3. **Proxy Kernel (PK)**: A lightweight kernel that provides basic services for RISC-V applications running on Spike, handling system calls and providing a minimal runtime environment.
+
+## Setting Up the Environment
+
+To set up the RISC-V development environment, follow these steps:
+
+### Prerequisites
+
+Ensure you have the following installed on your system:
+
+- A Unix-like operating system (Linux or macOS).
+- Development tools such as `make`, `git`, and `gcc`.
+
+### Step 1: Install Dependencies
+
+The commands to install the entire RISC-V toolchain, including Spike and the Proxy Kernel, are provided in the `dependencies.sh` file. Running this script will automate the installation process.
+
+### Step 2: Set Up Environment Variables
+
+After installing the toolchain, add the RISC-V toolchain to your `PATH` by adding the following line to your `.bashrc` or `.bash_profile`:
+
+`export PATH=/opt/riscv/bin:$PATH`
 
 ## `config.mk`
 
