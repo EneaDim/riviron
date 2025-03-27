@@ -36,11 +36,11 @@ After installing the toolchain, add the RISC-V toolchain to your `PATH` by addin
 
 `export PATH=/opt/riscv/bin:$PATH`
 
-## `config.mk`
+### config.mk
 
 The `config.mk` file is a configuration file that sets up the environment for cross-compiling RISC-V applications. It includes essential settings for the toolchain, compiler options, source files, and directory structure.
 
-### Key Sections
+#### Key Sections
 
 1. **Toolchain Settings**
   . **CROSS_COMPILE**: Prefix for the RISC-V cross-compiler toolchain (default: `riscv64-unknown-elf`).
@@ -62,11 +62,11 @@ The `config.mk` file is a configuration file that sets up the environment for cr
 7. **Include Directories**
   . **COMMON_INCS**: Include path for common headers.
   . **MAIN_INCS**: Include path for main application headers.
-## `Makefile`
+### Makefile
 
 The `Makefile` utilizes the settings defined in `config.mk` to manage the build process. It defines various targets for compiling the application, generating different output formats, and cleaning up build artifacts.
 
-### Key Targets
+#### Key Targets
 
 - **application**: The main target that builds the application, generating ELF, assembly, binary, VMEM, and disassembly files.
 
@@ -96,7 +96,5 @@ The `Makefile` utilizes the settings defined in `config.mk` to manage the build 
 
 To use the build system, follow these steps:
 
-1. Ensure that the `config.mk` file is included in your `Makefile`:
-2. Setup the config.mk file: Modify the config.mk file to configure the toolchain, program name, and any other settings as needed for your project.
-
-3. Run make application: Execute the command to build the application and generate the necessary output files.
+1. Setup the `config.mk` file: Modify the config.mk file to configure the toolchain, program name, and any other settings as needed for your project.
+2. Run `make application`: Execute the command to build the application and generate the necessary output files.
