@@ -12,10 +12,10 @@ mkdir build
 cd build
 ../configure --prefix=/opt/riscv --enable-multilib
 sudo make -j 2
-sudo make install
+make install
 mkdir build32
 cd build32
 ../configure --prefix=/opt/riscv --with-arch=rv32gc --with-abi=ilp32d
 sudo make -j 2
-sudo make install
+make install
 cd 
