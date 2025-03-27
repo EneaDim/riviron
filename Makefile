@@ -1,4 +1,6 @@
+# Include config.mk file
 include config.mk
+
 # Targets
 application: clean $(PROGRAM).elf $(PROGRAM).S $(PROGRAM).bin $(PROGRAM).vmem $(PROGRAM).dis reorder_files
 
