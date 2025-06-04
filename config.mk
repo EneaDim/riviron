@@ -25,7 +25,7 @@ QEMU             ?= qemu-riscv64
 # Spike ISA simulator
 SPIKE            := spike
 # Project settings
-PROGRAM          ?= hello_world
+PROG             ?= hello_world
 # Build directory
 BUILD_DIR        ?= build
 # Common directory
@@ -62,5 +62,8 @@ OBJS             := ${C_SRCS:.c=.o} ${ASM_SRCS:.S=.o} ${CRT:.S=.o}
 DEPS             := $(OBJS:%.o=%.d)
 # Spike direcory
 SPIKE_DIR        := isa-sim
+# Colours
+ORANGE           :=\033[38;5;214m
+RESET            :=\033[0m
 
 
