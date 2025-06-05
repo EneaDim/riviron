@@ -19,3 +19,38 @@ cd build32
 sudo make -j 2
 make install
 cd 
+echo "|**********************************************************************************|"
+echo "|                              SPIKE isa sim                                       |"
+echo "|**********************************************************************************|"
+cd
+sudo apt install device-tree-compiler libboost-regex-dev libboost-system-dev
+git clone https://github.com/riscv-software-src/riscv-isa-sim.git
+cd riscv-isa-sim 
+sudo mkdir /opt/spike
+mkdir build
+cd build
+../configure --prefix=/opt/spike
+make -j 2
+sudo make install
+cd 
+echo
+echo "|**********************************************************************************|"
+echo "|                              Proxy Kernel                                        |"
+echo "|**********************************************************************************|"
+cd 
+git clone https://github.com/riscv-software-src/riscv-pk.git
+cd riscv-pk
+sudo mkdir /opt/riscv-pk
+mkdir build
+cd build
+../configure --prefix=/opt/riscv-pk --host=riscv64-unknown-elf
+make -j 2
+sudo make install
+cd ..
+mkdir build32
+cd build32
+../configure --prefix=/opt/riscv-pk --host=riscv32-unknown-elf
+make -j 2
+sudo make install
+cd 
+echo
