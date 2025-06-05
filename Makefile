@@ -2,16 +2,16 @@
 include config.mk
 
 # Targets
-application: clean $(PROGRAM).elf $(PROGRAM).S $(PROGRAM).bin $(PROGRAM).vmem $(PROGRAM).dis reorder_files
+application: clean $(PROG).elf $(PROG).S $(PROG).bin $(PROG).vmem $(PROG).dis reorder_files
 
 # ELF target with OBJ dependecy
-$(PROGRAM).elf: $(OBJS)
+$(PROG).elf: $(OBJS)
 	@mkdir -p $(BUILD_DIR)
 	@echo "\n$(ORANGE)Compiling and assemblying...$(RESET)\n"
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(BUILD_DIR)/$@
 
 # Assembly target with OBJ dependecy
-$(PROGRAM).S: $(OBJS)
+$(PROG).S: $(OBJS)
 	@mkdir -p $(BUILD_DIR)
 	@echo "\n$(ORANGE)Compiling to assembly code...$(RESET)\n"
 	$(CC) $(CFLAGS) -c $(COMMON_INCS) $(MAIN_INCS) -fverbose-asm -g -O2 -S $(C_SRCS) 
@@ -48,7 +48,7 @@ $(PROGRAM).S: $(OBJS)
 spike:
 	@echo "\n$(ORANGE)Spike RISCV ISA simulator...$(RESET)\n"
 	@mkdir -p $(SPIKE_DIR) 
-	$(SPIKE) -l pk $(BUILD_DIR)/$(PROGRAM).elf 2> $(SPIKE_DIR)/$(PROGRAM)_spike_trace.log
+	$(SPIKE) -l pk $(BUILD_DIR)/$(PROG).elf 2> $(SPIKE_DIR)/$(PROG)_spike_trace.log
 
 # Reorder generated files
 reorder_files:

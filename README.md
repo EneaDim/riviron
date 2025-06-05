@@ -36,6 +36,13 @@ After installing the toolchain, add the RISC-V toolchain to your `PATH` by addin
 
 `export PATH=/opt/riscv/bin:$PATH`
 
+## Usage
+
+- Run `make help` to see the guide.
+    - Look under application/ folder and choose one of the application's name.
+    - Run make PROG="folder\_name" for compilation.
+    - Run make spike PROG="folder\_name" to emulate execution.
+
 ### config.mk
 
 The `config.mk` file is a configuration file that sets up the environment for cross-compiling RISC-V applications. It includes essential settings for the toolchain, compiler options, source files, and directory structure.

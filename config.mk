@@ -31,11 +31,11 @@ BUILD_DIR        ?= build
 # Common directory
 COMMON_DIR       ?= common
 # Main directory
-MAIN_DIR         ?= applications/$(PROGRAM)
+MAIN_DIR         ?= applications/$(PROG)
 # Common C sources
 COMMON_SRCS      := $(wildcard $(COMMON_DIR)/*.c)
 # Main C sources
-MAIN_SRCS        := $(wildcard applications/$(PROGRAM)/*.c)
+MAIN_SRCS        := $(wildcard applications/$(PROG)/*.c)
 # Common inlcudes
 COMMON_INCS      := -I$(COMMON_DIR)
 # Main includes
@@ -56,7 +56,7 @@ CFLAGS           := -march=$(ISA) -mabi=$(ABI) -Wall -g $(COPT) -ffreestanding \
                    #-nostdlib # -nostartfiles # => For Bare Metal System
 # Linker flags
 LDFLAGS          := -T $(LINKER) -static 
-LDFLAGS_POST     := -Wl,--gc-sections -Wl,-Map=$(MAIN_DIR)/$(PROGRAM).map
+LDFLAGS_POST     := -Wl,--gc-sections -Wl,-Map=$(MAIN_DIR)/$(PROG).map
 # Object files
 OBJS             := ${C_SRCS:.c=.o} ${ASM_SRCS:.S=.o} ${CRT:.S=.o}
 DEPS             := $(OBJS:%.o=%.d)
