@@ -48,7 +48,7 @@ $(PROG).S: $(OBJS)
 spike:
 	@echo "\n$(ORANGE)Spike RISCV ISA simulator...$(RESET)\n"
 	@mkdir -p $(SPIKE_DIR) 
-	$(SPIKE) -l pk $(BUILD_DIR)/$(PROG).elf 2> $(SPIKE_DIR)/$(PROG)_spike_trace.log
+	$(SPIKE) --isa=$(if $(filter 32,$(NBITS)),RV32GC,RV64GC) -l $(PK) $(BUILD_DIR)/$(PROG).elf 2> $(SPIKE_DIR)/$(PROG)_spike_trace.log
 
 # Reorder generated files
 reorder_files:
