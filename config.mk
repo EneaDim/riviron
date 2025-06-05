@@ -1,5 +1,7 @@
+# 32-64 BITS
+NBITS            ?= 64
 # Toolchain settings
-CROSS_COMPILE    ?= riscv64-unknown-elf
+CROSS_COMPILE    ?= riscv$(NBITS)-unknown-elf
 # RISCV GCC version
 GCC_VERSION      := $(shell $(CROSS_COMPILE)-gcc -dumpversion)
 # Cross-Compiler
@@ -13,15 +15,21 @@ OBJCOPY          := $(CROSS_COMPILE)-objcopy
 # Disassembler
 DISASSEMBLY      := $(CROSS_COMPILE)-objdump
 # ISA
-ISA              ?= rv64gc
+ISA              ?= rv$(NBITS)gc
 # ABI
-ABI              ?= lp64
+ifeq ($(NBITS),32)
+ABI ?= ilp32d
+else ifeq ($(NBITS),64)
+ABI ?= lp64d
+else
+$(error Unsupported NBITS value: $(NBITS))
+endif
 # Compiler Optimizations
 COPT             ?= -Os
 # Linker
 LINKER           ?= linker/linker.ld
 # QEMU emulator
-QEMU             ?= qemu-riscv64
+QEMU             ?= qemu-riscv$(NBITS)
 # Spike ISA simulator
 SPIKE            := spike
 # Project settings
