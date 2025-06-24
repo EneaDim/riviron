@@ -33,7 +33,8 @@ QEMU             ?= qemu-riscv$(NBITS)
 # Spike ISA simulator
 SPIKE            := spike
 # Proxy Kernel
-PK               ?= /opt/riscv-pk/riscv$(NBITS)-unknown-elf/bin/pk
+PK_ROOT          ?= opt
+PK               ?= /$(PK_ROOT)/riscv-pk/riscv$(NBITS)-unknown-elf/bin/pk
 # Project settings
 PROG             ?= hello_world
 # Build directory
