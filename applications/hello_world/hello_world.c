@@ -17,7 +17,7 @@ int main(void)
     }
 
     // Welcome message
-    printf("Hello LEN%d!\n", a >> 5);
+    printf("Hello!\n");
 
     // Recursively question Faith
     print_char(str);
