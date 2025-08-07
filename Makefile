@@ -1,8 +1,11 @@
 # Include config.mk file
 include config.mk
 
+new_app:
+	@mkdir -p $(MAIN_DIR) $(PROG) && touch $(MAIN_DIR)/$(PROG).c 
+
 # Targets
-application: clean $(PROG).elf $(PROG).S $(PROG).bin $(PROG).vmem $(PROG).dis reorder_files
+app: clean $(PROG).elf $(PROG).S $(PROG).bin $(PROG).vmem $(PROG).dis reorder_files
 
 # ELF target with OBJ dependecy
 $(PROG).elf: $(OBJS)
@@ -69,7 +72,8 @@ clean:
 help:
 	@echo "$(ORANGE)\n"
 	@echo "====================== Makefile Help ======================\n"
-	@echo "To compile the program:       make PROG=program_name\n"
+	@echo "To create a new empty app:    make new_app PROG=program_name\n"
+	@echo "To compile the program:       make app PROG=program_name\n"
 	@echo "To run with Spike simulator:  make spike PROG=program_name\n"
 	@echo "To clean the build directory: make clean\n"
 	@echo "===========================================================\n"
